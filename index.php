@@ -1,45 +1,7 @@
 <?php
     
-
-    $posts = [
+    $randomNumbers = [];
     
-        '10/01/2019' => [
-            [
-                'title' => 'Post 1',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 1'
-            ],
-            [
-                'title' => 'Post 2',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 2'
-            ],
-        ],
-        '10/02/2019' => [
-            [
-                'title' => 'Post 3',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 3'
-            ]
-        ],
-        '15/05/2019' => [
-            [
-                'title' => 'Post 4',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 4'
-            ],
-            [
-                'title' => 'Post 5',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 5'
-            ],
-            [
-                'title' => 'Post 6',
-                'author' => 'Michele Papagni',
-                'text' => 'Testo post 6'
-            ]
-        ],
-    ];
    
 ?>
 
@@ -55,28 +17,46 @@
     <body>
         <section>
             <h2>
-                Snack 2
+                Snack 3
             </h2>
             
-            <ul>
+           <div>
                 <?php
-                    foreach($posts as $date => $post ) {  
-                        foreach($post as $x) {
+                    for($i = 0; $i < 15; $i++) {
+                        $newNumber = rand(1, 100);
+                        if(!in_array($newNumber, $randomNumbers)) {
+                            $randomNumbers[] = $newNumber;
+
+                        }
+                        else {
+                            $i--;
+                        }
+                       
+                    }
+                    
                 ?>
+                <?php    
+                    foreach($randomNumbers as $random) {
+                ?>        
+                <ul>
                     <li>
                         <?php
-                        echo 'data del post:'.' '.$date;
-                        echo '<br>';
-                        echo 'post:'.' '.$x['title']; 
-                        echo 'post:'.' '.$x['author'];
-                        echo 'post:'.' '.$x['text'];
-                        ?>     
+                            echo $random;
+                        ?>
                     </li>
-                <?php        
+                </ul>
+                    
+                <?php
+
                     }
-                }
+                    
+
+
+                    var_dump($randomNumbers);
+            
                 ?>
-            </ul>
+           </div>
+          
         </section>
     </body>
 </html>
